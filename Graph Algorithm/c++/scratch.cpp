@@ -1,21 +1,28 @@
-// CPP program to traverse a map using range
-// based for loop
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
+
+ostream &operator <<(ostream &os, vector<int>s)
+{
+    vector<int>::iterator i;
+    for (i=s.begin();i!=s.end();i++)
+        if (i==s.end())
+            os<<*i;
+        else os<<*i<<" ";
+    return os;
+}
+
+ostream &operator <<(ostream &os, map<string,vector<int>>dict)
+{
+    map<string,vector<int>>::iterator i;
+    for (i=dict.begin();i!=dict.end();i++)
+        os<<"("<<i->first<<","<<i->second<<")"<<endl;
+    return os;
+}
 
 int main()
 {
-	int arr[] = { 1, 1, 2, 1, 1, 3, 4, 3 };
-	int n = sizeof(arr) / sizeof(arr[0]);
-
-	map<int, int> m;
-	for (int i = 0; i < n; i++)
-		m[arr[i]]++;
-
-	cout << "Element Frequency" << endl;
-	for (auto i : m)
-		cout << i.first +1<< " " << i.second
-			<< endl;
-
-	return 0;
+    map<string,vector<int>>dict={{"a",{1,2}},{"b",{1,3}},{"c",{1,4}}};
+    dict["se"]={1,7};
+    dict["df"]={1,12};
+    cout<<dict;
 }

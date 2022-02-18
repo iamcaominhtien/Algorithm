@@ -7,36 +7,36 @@ int explore(std::unordered_map<int, std::vector<int>> graph, int current, unorde
         return 0;
     visited[current]=true;
 
+    int c=1;
     vector<int>::iterator i;
     for (i=graph[current].begin();i!=graph[current].end();i++)
-        explore(graph,*i,visited);
-
-    return 1;
-}
-
-int connectedComponentsCount(std::unordered_map<int, std::vector<int>> graph)
-{
-    unordered_map<int,bool>visited;
-    int c=0;
-
-    for (auto i:graph)
-        c+=explore(graph,i.first,visited);
+        c+=explore(graph,*i,visited);
 
     return c;
+}
+
+int largestComponent(std::unordered_map<int, std::vector<int>> graph)
+{
+    unordered_map<int,bool>visited;
+    int largest=0;
+
+    for (auto i:graph)
+    {
+        int re=explore(graph,i.first,visited);
+        largest=max(largest,re);
+    }
+    return largest;
 }
 
 int main()
 {
     std::unordered_map<int, std::vector<int>> graph {
-      { 0, { 4, 7 } },
-      { 1, { } },
-      { 2, { } },
-      { 3, { 6 } },
-      { 4, { 0 } },
-      { 6, { 3 } },
-      { 7, { 0 } },
-      { 8, { } },
+      { 1, {2} },
+      { 2, {1, 8} },
+      { 6, {7} },
+      { 9, {8} },
+      { 7, {6, 8} },
+      { 8, {9, 7, 2} }
     };
-
-    cout<<connectedComponentsCount(graph);
+    cout<<largestComponent(graph);
 }
