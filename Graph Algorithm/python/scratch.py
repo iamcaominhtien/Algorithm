@@ -39,16 +39,18 @@
 # depthFirstPrint(a,'a')
 # breadthFirstPrint(a,'a')
 
-def test(n,s):
-    # print('--',n,s)
-    if n==10: 
-        # print(s)
-        return s
-    s.append(n)
-    print(n,s)
-    test(n+1,s)
-    print(n,s)
-    return s
+# def test(n,s):
+#     # print('--',n,s)
+#     if n==10: 
+#         # print(s)
+#         return s
+#     s.append(n)
+#     print(n,s)
+#     test(n+1,s)
+#     print(n,s)
+#     return s
 
-re=test(0,[])
-print(re)
+# re=test(0,[])
+# print(re)
+
+print(True+True)
